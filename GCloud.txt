@@ -1,0 +1,6 @@
+gcloud ml-engine jobs submit training trainv10    --job-dir=gs://mr-kotia-face-detection-bucket/train     --packages dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz      --module-name object_detection.train     --region us-east1     --config object_detection/samples/cloud/cloud.yml     --runtime-version=1.4     --     train_dir=gs://mr-kotia-face-detection-bucket/train    --pipeline_config_path=gs://mr-kotia-face-detection/data/ssd_mobilenet_v1_coco.config
+
+
+
+gcloud ml-engine jobs submit training evaluatev6    --job-dir=gs://mr-kotia-face-detection-bucket/train     --packages dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz      --module-name object_detection.eval     --region us-east1     --scale-tier BASIC_GPU   --runtime-version=1.4     --     eval_dir=gs://mr-kotia-face-detection-bucket/eval    --pipeline_config_path=gs://mr-kotia-face-detection/data/ssd_mobilenet_v1_coco.config
+
